@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: nevaeh-revision
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false

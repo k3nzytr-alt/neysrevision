@@ -1,0 +1,9 @@
+{
+  "name": "nevaeh-revision",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Nevaeh's GCSE revision site with cross-device accounts",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
