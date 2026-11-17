@@ -1,202 +1,1329 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nevaeh · GCSE Revision 💗</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#16090f;--bg2:#1d0c15;--card:#26111c;--card2:#301624;--line:#43203a;--ink:#fdeef5;--muted:#d6a3be;--dim:#9a6a84;--acc:#ff6fb5;--good:#ffb3d9;--r:16px;--ease:cubic-bezier(.2,.8,.2,1)}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;cursor:pointer}
-::selection{background:#ff6fb555}
-/* layout */
-.shell{display:grid;grid-template-columns:232px 1fr;min-height:100vh}
-aside{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:var(--bg2);padding:20px 14px;display:flex;flex-direction:column;gap:4px;overflow:auto}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em;padding:4px 10px 18px}
-.brand i{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#ff6fb5,#ffb3d9);display:grid;place-items:center;font-style:normal;font-size:14px;color:#2a0a1a}
-.nav{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:var(--muted);font-weight:500;transition:background .2s,color .2s}
-.nav:hover{background:var(--card);color:var(--ink)}
-.nav.on{background:var(--card2);color:var(--ink)}
-.nav .dot{width:8px;height:8px;border-radius:3px;background:var(--c,var(--dim));flex:none}
-.nav .pc{margin-left:auto;font:500 11px "JetBrains Mono";color:var(--dim)}
-.navh{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);padding:16px 12px 6px;font-weight:600}
-main{min-width:0;padding:28px 36px 90px;max-width:1180px}
-.view{display:none}.view.on{display:block;animation:in .45s var(--ease)}
-@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.stag>*{opacity:0;animation:in .5s var(--ease) forwards}
-.stag>*:nth-child(1){animation-delay:.03s}.stag>*:nth-child(2){animation-delay:.07s}.stag>*:nth-child(3){animation-delay:.11s}.stag>*:nth-child(4){animation-delay:.15s}.stag>*:nth-child(5){animation-delay:.19s}.stag>*:nth-child(6){animation-delay:.23s}.stag>*:nth-child(n+7){animation-delay:.27s}
-h1{font-size:32px;letter-spacing:-.03em;margin:0 0 4px;font-weight:800}
-h2{font-size:19px;letter-spacing:-.01em;margin:0;font-weight:700}
-.sub{color:var(--muted);margin:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.row{display:flex;gap:16px;flex-wrap:wrap}
-.grid{display:grid;gap:14px}
-.g3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.sec{display:flex;align-items:center;justify-content:space-between;margin:30px 0 12px}
-.sec h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
-.bar{height:8px;background:#232937;border-radius:99px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--c,var(--acc));transition:width 1s var(--ease)}
-.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:4px 10px;border-radius:99px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
-.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card2);border-radius:10px;padding:8px 14px;font-weight:600;font-size:13.5px;transition:transform .15s,background .2s,border-color .2s}
-.btn:hover{border-color:#3a4254;transform:translateY(-1px)}
-.btn.pri{background:var(--acc);border-color:var(--acc);color:#2a0a1a}
-.btn.sm{padding:5px 10px;font-size:12.5px;border-radius:8px}
-.btn.yt{background:#ff3b3b1a;border-color:#ff3b3b44;color:#ff8a8a}
-.btn.yt:hover{background:#ff3b3b2e}
-.btn.yt2{color:#ff8a8a;opacity:.8}.btn.mgb{background:#9b6bff1a;border-color:#9b6bff44;color:#c7b0ff}.btn.have{border-color:#ffb3d988;color:#7ff0bf}.btn.pri.have{color:#2a0a1a;box-shadow:0 0 0 2px #ffb3d966}#exdrop{padding:16px}.mg{display:contents}
-.love{margin-top:28px;position:relative;overflow:hidden;background:linear-gradient(135deg,#3a1229,#26111c 60%);border-color:#ff6fb555;padding:26px 28px}
-.love h3{margin:0 0 10px;font-size:20px;color:#ffc2df}.love p{color:#f6d6e6;line-height:1.7;margin:0 0 10px;max-width:720px}
-.love .sig{font-family:'Dancing Script',cursive;font-size:24px;color:#ff8ec5;margin-top:14px}
-.love .hearts{position:absolute;right:18px;top:12px;display:flex;gap:6px;opacity:.9}.love .hearts i{font-style:normal;animation:bob 2.6s ease-in-out infinite}
-.love .hearts i:nth-child(2){animation-delay:.3s}.love .hearts i:nth-child(3){animation-delay:.6s}.love .hearts i:nth-child(4){animation-delay:.9s}.love .hearts i:nth-child(5){animation-delay:1.2s}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}.btn.qz{background:#ffb3d91a;border-color:#ffb3d944;color:#7ff0bf}.btn.ln{background:#22c4ee14;border-color:#22c4ee3d;color:#8fe3f7}
-.uh .qz{margin-left:auto;margin-right:10px}.mbox.qbox{max-width:680px;width:100%}.qopt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);font:inherit;cursor:pointer;transition:.15s}.qopt:hover:not([disabled]){border-color:var(--acc);transform:translateX(3px)}.qopt.ok{border-color:#ffb3d9;background:#ffb3d922}.qopt.bad{border-color:#ff5c5c;background:#ff5c5c22}.qexp{margin-top:12px;padding:12px 14px;border-radius:12px;background:#ffffff08;color:var(--muted);font-size:14px;line-height:1.5}.qq{font-size:17px;line-height:1.45;margin:6px 0 10px}.note-md{max-height:65vh;overflow:auto;line-height:1.6;font-size:14.5px}.note-md h3{margin:16px 0 6px;font-size:15px;color:var(--acc)}.note-md ul{margin:6px 0 6px 18px;padding:0}.note-md li{margin:3px 0}.spin{display:inline-block;width:16px;height:16px;border:2px solid #ffffff33;border-top-color:var(--acc);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px;margin-right:8px}@keyframes sp{to{transform:rotate(360deg)}}
-/* hero */
-.hero{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:8px}
-.ring{position:relative;width:132px;height:132px}
-.ring svg{transform:rotate(-90deg)}
-.ring circle{fill:none;stroke-width:11}
-.ring .bg{stroke:#232937}.ring .fg{stroke:url(#gr);stroke-linecap:round;transition:stroke-dashoffset 1.4s var(--ease)}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:28px;font-weight:800;letter-spacing:-.03em}
-.ring b small{display:block;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0;text-align:center;margin-top:-34px}
-.count{display:flex;gap:10px;margin-top:16px}
-.count div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:84px}
-.count b{display:block;font-size:24px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.count span{font-size:12px;color:var(--muted)}
-/* subject cards */
-.scard{position:relative;overflow:hidden;cursor:pointer;transition:transform .25s var(--ease),border-color .25s}
-.scard:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 55%,var(--line))}
-.scard::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:var(--c);opacity:.09;filter:blur(8px);transition:opacity .3s}
-.scard:hover::after{opacity:.18}
-.scard .ic{width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);display:grid;place-items:center;font-size:20px;margin-bottom:14px}
-.scard h3{margin:0;font-size:18px}
-.scard .spec{font-size:12.5px;color:var(--muted)}
-.scard .meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin:14px 0 7px}
-.scard .meta b{color:var(--ink)}
-.next{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line);transition:border-color .2s,transform .2s}
-.next:hover{border-color:#3a4254;transform:translateX(3px)}
-.next .tg{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
-.next .tt{font-weight:600}
-.next .go{margin-left:auto;color:var(--muted)}
-/* course */
-.chead{display:flex;gap:18px;align-items:center;margin-bottom:18px}
-.chead .ic{width:60px;height:60px;border-radius:16px;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);display:grid;place-items:center;font-size:28px;flex:none}
-.cprog{display:flex;align-items:center;gap:14px;margin:6px 0 0}
-.cprog .bar{flex:1;max-width:420px}
-.cols{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
-.unit{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
-.uh{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;user-select:none}
-.uh h3{margin:0;font-size:15.5px;flex:1}
-.uh .n{font:500 12px "JetBrains Mono";color:var(--muted)}
-.uh .mini{width:70px}
-.uh .chev{color:var(--dim);transition:transform .3s var(--ease)}
-.unit.open .chev{transform:rotate(90deg)}
-.ub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
-.unit.open .ub{grid-template-rows:1fr}
-.ub>div{overflow:hidden}
-.topic{display:flex;align-items:center;gap:12px;padding:11px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
-.topic .tt{flex:1;min-width:180px;font-weight:500;transition:color .3s}
-.topic.done .tt{color:var(--muted)}
-.chk{width:24px;height:24px;border-radius:50%;border:2px solid #3a4254;background:none;display:grid;place-items:center;flex:none;transition:all .25s var(--ease);padding:0}
-.chk:hover{border-color:var(--c)}
-.chk svg{width:13px;height:13px;stroke:#0b0d12;stroke-width:3.2;fill:none;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .35s var(--ease) .05s}
-.done .chk{background:var(--c);border-color:var(--c);transform:scale(1.06)}
-.done .chk svg{stroke-dashoffset:0}
-.tact{display:flex;gap:6px;flex-wrap:wrap}
-.side .card{margin-bottom:14px}
-.side h4{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.rl{display:flex;align-items:center;gap:10px;padding:8px 10px;margin:0 -10px;border-radius:9px;font-size:13.5px;transition:background .2s}
-.rl:hover{background:var(--card2)}
-.rl .k{font:600 10px "JetBrains Mono";padding:2px 6px;border-radius:5px;flex:none}
-.k-pdf{background:#ff6b6b22;color:#ff8a8a}.k-sp{background:#5b8cff22;color:#8fb0ff}.k-web{background:#ffb3d922;color:#6ff0b8}.k-img{background:#f5b94222;color:#ffd27a}
-.paper{font-size:13px;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--line)}
-.paper:last-child{border:0}
-/* plan */
-.week{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:10px;overflow:hidden}
-.week.now{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc),0 10px 40px -20px var(--acc)}
-.wh{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer}
-.wh .wn{font:600 12px "JetBrains Mono";color:var(--muted);width:70px}
-.wh h3{margin:0;font-size:15px;flex:1}
-.wh .tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--card2);color:var(--muted)}
-.week.now .wh .tag{background:var(--acc);color:#2a0a1a}
-.wh .mini{width:90px}
-.wb{display:none;padding:0 18px 14px}
-.week.open .wb{display:block;animation:in .35s var(--ease)}
-.wt{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
-.wt .sj{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--c);width:120px;flex:none}
-.wt .tt{flex:1;font-size:14px}
-.wt.done .tt{color:var(--muted);text-decoration:line-through}
-.note{font-size:13px;color:var(--muted)}
-/* exams */
-.ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
-.ex .card h3{margin:0 0 2px;display:flex;align-items:center;gap:10px}
-.ex .card h3 i{width:10px;height:10px;border-radius:3px;background:var(--c)}
-/* modal */
-.modal{position:fixed;inset:0;background:#05060acc;backdrop-filter:blur(6px);z-index:80;display:grid;place-items:center;padding:20px;animation:fade .25s}
-@keyframes fade{from{opacity:0}}
-.mbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;width:min(620px,100%);animation:pop .35s var(--ease)}
-@keyframes pop{from{transform:scale(.96);opacity:0}}
-.flash{min-height:180px;display:grid;place-items:center;text-align:center;font-size:22px;font-weight:600;line-height:1.35;padding:20px;border-radius:16px;background:var(--bg2);border:1px solid var(--line);cursor:pointer;perspective:800px}
-.flash .ans{font-size:16px;color:var(--good);margin-top:12px;font-weight:600}
-.lightbox img{max-width:min(1100px,92vw);max-height:84vh;border-radius:12px;display:block}
-.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;opacity:0;transition:all .3s var(--ease);z-index:200;pointer-events:none}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-#confetti{position:fixed;inset:0;pointer-events:none;z-index:150}
-/* editor */
-#v-editor.on{display:flex}
-#v-editor{position:fixed;inset:0;z-index:60;background:#0a0b0f;flex-direction:column}
-.etop{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}
-.etop .fname{flex:1;min-width:120px;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.etop .fname b{color:var(--ink)}
-.ib{width:36px;height:36px;border-radius:9px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;padding:0}
-.ib:disabled{opacity:.35;cursor:default}
-.ib svg,.tool svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.zv{font:500 12px "JetBrains Mono";min-width:46px;text-align:center}
-.eprops{display:flex;align-items:center;gap:12px;padding:8px 16px;min-height:46px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap}
-.eprops .lbl{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
-.sw{width:22px;height:22px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--line);padding:0}
-.sw[aria-pressed=true]{box-shadow:0 0 0 2px var(--ink)}
-.eprops input[type=range]{width:110px;accent-color:var(--acc)}
-.ework{flex:1;min-height:0;display:flex;gap:12px;padding:12px 16px 0}
-.rail{display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:5px;align-self:flex-start}
-.tool{width:40px;height:40px;border-radius:8px;border:0;background:transparent;display:grid;place-items:center}
-.tool:hover{background:var(--card2)}
-.tool[aria-pressed=true]{background:var(--acc);color:#2a0a1a}
-.stage{flex:1;min-width:0;overflow:auto}
-#pages{display:flex;flex-direction:column;align-items:center;gap:24px;padding:6px 0 80px;min-width:min-content}
-.pgl{font:500 11px "JetBrains Mono";color:var(--dim);margin-bottom:6px}
-.sheet{position:relative;background:#fff;box-shadow:0 12px 40px -12px #000}
-.sheet canvas{position:absolute;left:0;top:0;width:100%;height:100%}
-.sheet .hlc{mix-blend-mode:multiply;pointer-events:none}
-.sheet .pdfc{pointer-events:none}
-.ov{touch-action:none}
-#v-editor[data-tool=select] .ov{touch-action:pan-x pan-y pinch-zoom}
-#v-editor[data-tool=text] .ov{cursor:text}
-#v-editor[data-tool=draw] .ov,#v-editor[data-tool=hl] .ov,#v-editor[data-tool=wo] .ov,#v-editor[data-tool=box] .ov,#v-editor[data-tool=erase] .ov{cursor:crosshair}
-.tedit{position:absolute;z-index:5;border:1px dashed var(--acc);background:rgba(255,255,255,.7);padding:0;margin:0;resize:none;overflow:hidden;font-family:Helvetica,Arial,sans-serif;line-height:1.25;white-space:pre;outline:none;min-width:40px}
-.empty{display:grid;place-items:center;height:100%;color:var(--muted);text-align:center;padding:40px}
-.drop{border:2px dashed #3a4254;border-radius:18px;padding:50px 30px;text-align:center;transition:all .2s}
-.drop.over{border-color:var(--acc);background:#ff6fb510}
-.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-top:20px;text-align:left}
-@media (max-width:900px){.shell{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow-x:auto;padding:10px;gap:4px}.brand,.navh{display:none}.nav .pc{display:none}main{padding:20px 16px 80px}.cols{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.ework{flex-direction:column}.rail{flex-direction:row;align-self:stretch;overflow-x:auto}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.stag>*{opacity:1}}
-.lovefoot{text-align:center;color:var(--muted);font-size:13px;padding:26px 16px 34px}
-.lovefoot .beat{display:inline-block;animation:beat 1.4s ease-in-out infinite}
-@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
-.lovepop{position:fixed;right:22px;bottom:22px;z-index:250;display:flex;align-items:center;gap:10px;max-width:320px;background:linear-gradient(135deg,#ff6fb5,#ff9fcf);color:#3a0a22;font-weight:700;font-size:15px;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px #ff6fb566;opacity:0;transform:translateY(30px) scale(.9);transition:all .5s cubic-bezier(.2,.9,.3,1.3);pointer-events:none}
-.lovepop.on{opacity:1;transform:none;pointer-events:auto;cursor:pointer}
-.lovepop .lp-h{font-size:22px;animation:beat 1.4s ease-in-out infinite}
-.floatheart{position:fixed;bottom:-30px;z-index:240;pointer-events:none;font-size:22px;animation:floatup 4s ease-in forwards}
-@keyframes floatup{to{transform:translate(var(--dx),-105vh) rotate(var(--r));opacity:0}}
-@media (prefers-reduced-motion:reduce){.floatheart{display:none}.lovefoot .beat,.lovepop .lp-h{animation:none}}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nevaeh · GCSE Revision 💗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet">
+    <style>
+    :root {
+      --bg: #16090f;
+      --bg2: #1d0c15;
+      --card: #26111c;
+      --card2: #301624;
+      --line: #43203a;
+      --ink: #fdeef5;
+      --muted: #d6a3be;
+      --dim: #9a6a84;
+      --acc: #ff6fb5;
+      --good: #ffb3d9;
+      --r: 16px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.5 Inter,system-ui,sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+    ::selection {
+      background: #ff6fb555;
+    }
+    /* layout */
+    .shell {
+      display: grid;
+      grid-template-columns: 232px 1fr;
+      min-height: 100vh;
+    }
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid var(--line);
+      background: var(--bg2);
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: auto;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -.02em;
+      padding: 4px 10px 18px;
+    }
+    .brand i {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#ff6fb5,#ffb3d9);
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      font-size: 14px;
+      color: #2a0a1a;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: background .2s,color .2s;
+    }
+    .nav:hover {
+      background: var(--card);
+      color: var(--ink);
+    }
+    .nav.on {
+      background: var(--card2);
+      color: var(--ink);
+    }
+    .nav .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 3px;
+      background: var(--c,var(--dim));
+      flex: none;
+    }
+    .nav .pc {
+      margin-left: auto;
+      font: 500 11px "JetBrains Mono";
+      color: var(--dim);
+    }
+    .navh {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--dim);
+      padding: 16px 12px 6px;
+      font-weight: 600;
+    }
+    main {
+      min-width: 0;
+      padding: 28px 36px 90px;
+      max-width: 1180px;
+    }
+    .view {
+      display: none;
+    }
+    .view.on {
+      display: block;
+      animation: in .45s var(--ease);
+    }
+    @keyframes in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .stag > * {
+      opacity: 0;
+      animation: in .5s var(--ease) forwards;
+    }
+    .stag > *:nth-child(1) {
+      animation-delay: .03s;
+    }
+    .stag > *:nth-child(2) {
+      animation-delay: .07s;
+    }
+    .stag > *:nth-child(3) {
+      animation-delay: .11s;
+    }
+    .stag > *:nth-child(4) {
+      animation-delay: .15s;
+    }
+    .stag > *:nth-child(5) {
+      animation-delay: .19s;
+    }
+    .stag > *:nth-child(6) {
+      animation-delay: .23s;
+    }
+    .stag > *:nth-child(n+7) {
+      animation-delay: .27s;
+    }
+    h1 {
+      font-size: 32px;
+      letter-spacing: -.03em;
+      margin: 0 0 4px;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 19px;
+      letter-spacing: -.01em;
+      margin: 0;
+      font-weight: 700;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 20px;
+    }
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    .g3 {
+      grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    }
+    .sec {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 30px 0 12px;
+    }
+    .sec h2 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .bar {
+      height: 8px;
+      background: #232937;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 99px;
+      background: var(--c,var(--acc));
+      transition: width 1s var(--ease);
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-size: 13.5px;
+      transition: transform .15s,background .2s,border-color .2s;
+    }
+    .btn:hover {
+      border-color: #3a4254;
+      transform: translateY(-1px);
+    }
+    .btn.pri {
+      background: var(--acc);
+      border-color: var(--acc);
+      color: #2a0a1a;
+    }
+    .btn.sm {
+      padding: 5px 10px;
+      font-size: 12.5px;
+      border-radius: 8px;
+    }
+    .btn.yt {
+      background: #ff3b3b1a;
+      border-color: #ff3b3b44;
+      color: #ff8a8a;
+    }
+    .btn.yt:hover {
+      background: #ff3b3b2e;
+    }
+    .btn.yt2 {
+      color: #ff8a8a;
+      opacity: .8;
+    }
+    .btn.mgb {
+      background: #9b6bff1a;
+      border-color: #9b6bff44;
+      color: #c7b0ff;
+    }
+    .btn.have {
+      border-color: #ffb3d988;
+      color: #7ff0bf;
+    }
+    .btn.pri.have {
+      color: #2a0a1a;
+      box-shadow: 0 0 0 2px #ffb3d966;
+    }
+    #exdrop {
+      padding: 16px;
+    }
+    .mg {
+      display: contents;
+    }
+    .love {
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg,#3a1229,#26111c 60%);
+      border-color: #ff6fb555;
+      padding: 26px 28px;
+    }
+    .love h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #ffc2df;
+    }
+    .love p {
+      color: #f6d6e6;
+      line-height: 1.7;
+      margin: 0 0 10px;
+      max-width: 720px;
+    }
+    .love .sig {
+      font-family: 'Dancing Script',cursive;
+      font-size: 24px;
+      color: #ff8ec5;
+      margin-top: 14px;
+    }
+    .love .hearts {
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      display: flex;
+      gap: 6px;
+      opacity: .9;
+    }
+    .love .hearts i {
+      font-style: normal;
+      animation: bob 2.6s ease-in-out infinite;
+    }
+    .love .hearts i:nth-child(2) {
+      animation-delay: .3s;
+    }
+    .love .hearts i:nth-child(3) {
+      animation-delay: .6s;
+    }
+    .love .hearts i:nth-child(4) {
+      animation-delay: .9s;
+    }
+    .love .hearts i:nth-child(5) {
+      animation-delay: 1.2s;
+    }
+    @keyframes bob {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+    .btn.qz {
+      background: #ffb3d91a;
+      border-color: #ffb3d944;
+      color: #7ff0bf;
+    }
+    .btn.ln {
+      background: #22c4ee14;
+      border-color: #22c4ee3d;
+      color: #8fe3f7;
+    }
+    .uh .qz {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    .mbox.qbox {
+      max-width: 680px;
+      width: 100%;
+    }
+    .qopt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 8px 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg2);
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+      transition: .15s;
+    }
+    .qopt:hover:not([disabled]) {
+      border-color: var(--acc);
+      transform: translateX(3px);
+    }
+    .qopt.ok {
+      border-color: #ffb3d9;
+      background: #ffb3d922;
+    }
+    .qopt.bad {
+      border-color: #ff5c5c;
+      background: #ff5c5c22;
+    }
+    .qexp {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #ffffff08;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .qq {
+      font-size: 17px;
+      line-height: 1.45;
+      margin: 6px 0 10px;
+    }
+    .note-md {
+      max-height: 65vh;
+      overflow: auto;
+      line-height: 1.6;
+      font-size: 14.5px;
+    }
+    .note-md h3 {
+      margin: 16px 0 6px;
+      font-size: 15px;
+      color: var(--acc);
+    }
+    .note-md ul {
+      margin: 6px 0 6px 18px;
+      padding: 0;
+    }
+    .note-md li {
+      margin: 3px 0;
+    }
+    .spin {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff33;
+      border-top-color: var(--acc);
+      border-radius: 50%;
+      animation: sp 1s linear infinite;
+      vertical-align: -3px;
+      margin-right: 8px;
+    }
+    @keyframes sp {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    /* hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .ring {
+      position: relative;
+      width: 132px;
+      height: 132px;
+    }
+    .ring svg {
+      transform: rotate(-90deg);
+    }
+    .ring circle {
+      fill: none;
+      stroke-width: 11;
+    }
+    .ring .bg {
+      stroke: #232937;
+    }
+    .ring .fg {
+      stroke: url(#gr);
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.4s var(--ease);
+    }
+    .ring b {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .ring b small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-align: center;
+      margin-top: -34px;
+    }
+    .count {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .count div {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      min-width: 84px;
+    }
+    .count b {
+      display: block;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      font-variant-numeric: tabular-nums;
+    }
+    .count span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    /* subject cards */
+    .scard {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .25s var(--ease),border-color .25s;
+    }
+    .scard:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb,var(--c) 55%,var(--line));
+    }
+    .scard::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--c);
+      opacity: .09;
+      filter: blur(8px);
+      transition: opacity .3s;
+    }
+    .scard:hover::after {
+      opacity: .18;
+    }
+    .scard .ic {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: color-mix(in srgb,var(--c) 18%,transparent);
+      color: var(--c);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+    .scard h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .scard .spec {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .scard .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin: 14px 0 7px;
+    }
+    .scard .meta b {
+      color: var(--ink);
+    }
+    .next {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      transition: border-color .2s,transform .2s;
+    }
+    .next:hover {
+      border-color: #3a4254;
+      transform: translateX(3px);
+    }
+    .next .tg {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--c);
+    }
+    .next .tt {
+      font-weight: 600;
+    }
+    .next .go {
+      margin-left: auto;
+      color: var(--muted);
+    }
+    /* course */
+    .chead {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .chead .ic {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: color-mix(in srgb,var(--c) 18%,transparent);
+      color: var(--c);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      flex: none;
+    }
+    .cprog {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 6px 0 0;
+    }
+    .cprog .bar {
+      flex: 1;
+      max-width: 420px;
+    }
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 18px;
+      align-items: start;
+    }
+    .unit {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .uh {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .uh h3 {
+      margin: 0;
+      font-size: 15.5px;
+      flex: 1;
+    }
+    .uh .n {
+      font: 500 12px "JetBrains Mono";
+      color: var(--muted);
+    }
+    .uh .mini {
+      width: 70px;
+    }
+    .uh .chev {
+      color: var(--dim);
+      transition: transform .3s var(--ease);
+    }
+    .unit.open .chev {
+      transform: rotate(90deg);
+    }
+    .ub {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .4s var(--ease);
+    }
+    .unit.open .ub {
+      grid-template-rows: 1fr;
+    }
+    .ub > div {
+      overflow: hidden;
+    }
+    .topic {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 18px;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .topic .tt {
+      flex: 1;
+      min-width: 180px;
+      font-weight: 500;
+      transition: color .3s;
+    }
+    .topic.done .tt {
+      color: var(--muted);
+    }
+    .chk {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #3a4254;
+      background: none;
+      display: grid;
+      place-items: center;
+      flex: none;
+      transition: all .25s var(--ease);
+      padding: 0;
+    }
+    .chk:hover {
+      border-color: var(--c);
+    }
+    .chk svg {
+      width: 13px;
+      height: 13px;
+      stroke: #0b0d12;
+      stroke-width: 3.2;
+      fill: none;
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      transition: stroke-dashoffset .35s var(--ease) .05s;
+    }
+    .done .chk {
+      background: var(--c);
+      border-color: var(--c);
+      transform: scale(1.06);
+    }
+    .done .chk svg {
+      stroke-dashoffset: 0;
+    }
+    .tact {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .side .card {
+      margin-bottom: 14px;
+    }
+    .side h4 {
+      margin: 0 0 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .rl {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      margin: 0 -10px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      transition: background .2s;
+    }
+    .rl:hover {
+      background: var(--card2);
+    }
+    .rl .k {
+      font: 600 10px "JetBrains Mono";
+      padding: 2px 6px;
+      border-radius: 5px;
+      flex: none;
+    }
+    .k-pdf {
+      background: #ff6b6b22;
+      color: #ff8a8a;
+    }
+    .k-sp {
+      background: #5b8cff22;
+      color: #8fb0ff;
+    }
+    .k-web {
+      background: #ffb3d922;
+      color: #6ff0b8;
+    }
+    .k-img {
+      background: #f5b94222;
+      color: #ffd27a;
+    }
+    .paper {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .paper:last-child {
+      border: 0;
+    }
+    /* plan */
+    .week {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .week.now {
+      border-color: var(--acc);
+      box-shadow: 0 0 0 1px var(--acc),0 10px 40px -20px var(--acc);
+    }
+    .wh {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      cursor: pointer;
+    }
+    .wh .wn {
+      font: 600 12px "JetBrains Mono";
+      color: var(--muted);
+      width: 70px;
+    }
+    .wh h3 {
+      margin: 0;
+      font-size: 15px;
+      flex: 1;
+    }
+    .wh .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--card2);
+      color: var(--muted);
+    }
+    .week.now .wh .tag {
+      background: var(--acc);
+      color: #2a0a1a;
+    }
+    .wh .mini {
+      width: 90px;
+    }
+    .wb {
+      display: none;
+      padding: 0 18px 14px;
+    }
+    .week.open .wb {
+      display: block;
+      animation: in .35s var(--ease);
+    }
+    .wt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+    }
+    .wt .sj {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--c);
+      width: 120px;
+      flex: none;
+    }
+    .wt .tt {
+      flex: 1;
+      font-size: 14px;
+    }
+    .wt.done .tt {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    /* exams */
+    .ex {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(340px,1fr));
+      gap: 14px;
+    }
+    .ex .card h3 {
+      margin: 0 0 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ex .card h3 i {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--c);
+    }
+    /* modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: #05060acc;
+      backdrop-filter: blur(6px);
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      animation: fade .25s;
+    }
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+    }
+    .mbox {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      width: min(620px,100%);
+      animation: pop .35s var(--ease);
+    }
+    @keyframes pop {
+      from {
+        transform: scale(.96);
+        opacity: 0;
+      }
+    }
+    .flash {
+      min-height: 180px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.35;
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      perspective: 800px;
+    }
+    .flash .ans {
+      font-size: 16px;
+      color: var(--good);
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    .lightbox img {
+      max-width: min(1100px,92vw);
+      max-height: 84vh;
+      border-radius: 12px;
+      display: block;
+    }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translate(-50%,20px);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0;
+      transition: all .3s var(--ease);
+      z-index: 200;
+      pointer-events: none;
+    }
+    .toast.on {
+      opacity: 1;
+      transform: translate(-50%,0);
+    }
+    #confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 150;
+    }
+    /* editor */
+    #v-editor.on {
+      display: flex;
+    }
+    #v-editor {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: #0a0b0f;
+      flex-direction: column;
+    }
+    .etop {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg2);
+      flex-wrap: wrap;
+    }
+    .etop .fname {
+      flex: 1;
+      min-width: 120px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .etop .fname b {
+      color: var(--ink);
+    }
+    .ib {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      display: grid;
+      place-items: center;
+      padding: 0;
+    }
+    .ib:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+    .ib svg,
+    .tool svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .zv {
+      font: 500 12px "JetBrains Mono";
+      min-width: 46px;
+      text-align: center;
+    }
+    .eprops {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      min-height: 46px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .eprops .lbl {
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .sw {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--card);
+      box-shadow: 0 0 0 1px var(--line);
+      padding: 0;
+    }
+    .sw[aria-pressed=true] {
+      box-shadow: 0 0 0 2px var(--ink);
+    }
+    .eprops input[type=range] {
+      width: 110px;
+      accent-color: var(--acc);
+    }
+    .ework {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      gap: 12px;
+      padding: 12px 16px 0;
+    }
+    .rail {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 5px;
+      align-self: flex-start;
+    }
+    .tool {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 0;
+      background: transparent;
+      display: grid;
+      place-items: center;
+    }
+    .tool:hover {
+      background: var(--card2);
+    }
+    .tool[aria-pressed=true] {
+      background: var(--acc);
+      color: #2a0a1a;
+    }
+    .stage {
+      flex: 1;
+      min-width: 0;
+      overflow: auto;
+    }
+    #pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 6px 0 80px;
+      min-width: min-content;
+    }
+    .pgl {
+      font: 500 11px "JetBrains Mono";
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+    .sheet {
+      position: relative;
+      background: #fff;
+      box-shadow: 0 12px 40px -12px #000;
+    }
+    .sheet canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .sheet .hlc {
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .sheet .pdfc {
+      pointer-events: none;
+    }
+    .ov {
+      touch-action: none;
+    }
+    #v-editor[data-tool=select] .ov {
+      touch-action: pan-x pan-y pinch-zoom;
+    }
+    #v-editor[data-tool=text] .ov {
+      cursor: text;
+    }
+    #v-editor[data-tool=draw] .ov,
+    #v-editor[data-tool=hl] .ov,
+    #v-editor[data-tool=wo] .ov,
+    #v-editor[data-tool=box] .ov,
+    #v-editor[data-tool=erase] .ov {
+      cursor: crosshair;
+    }
+    .tedit {
+      position: absolute;
+      z-index: 5;
+      border: 1px dashed var(--acc);
+      background: rgba(255,255,255,.7);
+      padding: 0;
+      margin: 0;
+      resize: none;
+      overflow: hidden;
+      font-family: Helvetica,Arial,sans-serif;
+      line-height: 1.25;
+      white-space: pre;
+      outline: none;
+      min-width: 40px;
+    }
+    .empty {
+      display: grid;
+      place-items: center;
+      height: 100%;
+      color: var(--muted);
+      text-align: center;
+      padding: 40px;
+    }
+    .drop {
+      border: 2px dashed #3a4254;
+      border-radius: 18px;
+      padding: 50px 30px;
+      text-align: center;
+      transition: all .2s;
+    }
+    .drop.over {
+      border-color: var(--acc);
+      background: #ff6fb510;
+    }
+    .lib {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap: 8px;
+      margin-top: 20px;
+      text-align: left;
+    }
+    @media (max-width:900px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 4px;
+      }
+      .brand,
+      .navh {
+        display: none;
+      }
+      .nav .pc {
+        display: none;
+      }
+      main {
+        padding: 20px 16px 80px;
+      }
+      .cols {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .ework {
+        flex-direction: column;
+      }
+      .rail {
+        flex-direction: row;
+        align-self: stretch;
+        overflow-x: auto;
+      }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none!important;
+        transition: none!important;
+      }
+      .stag > * {
+        opacity: 1;
+      }
+    }
+    .lovefoot {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 26px 16px 34px;
+    }
+    .lovefoot .beat {
+      display: inline-block;
+      animation: beat 1.4s ease-in-out infinite;
+    }
+    @keyframes beat {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      15% {
+        transform: scale(1.3);
+      }
+      30% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.18);
+      }
+    }
+    .lovepop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 250;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 320px;
+      background: linear-gradient(135deg,#ff6fb5,#ff9fcf);
+      color: #3a0a22;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px #ff6fb566;
+      opacity: 0;
+      transform: translateY(30px) scale(.9);
+      transition: all .5s cubic-bezier(.2,.9,.3,1.3);
+      pointer-events: none;
+    }
+    .lovepop.on {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .lovepop .lp-h {
+      font-size: 22px;
+      animation: beat 1.4s ease-in-out infinite;
+    }
+    .floatheart {
+      position: fixed;
+      bottom: -30px;
+      z-index: 240;
+      pointer-events: none;
+      font-size: 22px;
+      animation: floatup 4s ease-in forwards;
+    }
+    @keyframes floatup {
+      to {
+        transform: translate(var(--dx),-105vh) rotate(var(--r));
+        opacity: 0;
+      }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .floatheart {
+        display: none;
+      }
+      .lovefoot .beat,
+      .lovepop .lp-h {
+        animation: none;
+      }
+    }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"
+      rel="stylesheet">
+  </head>
+  <body>
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#ff6fb5"/><stop offset="1" stop-color="#ffb3d9"/></linearGradient></defs></svg>
 <div class="shell">
 <aside id="side"></aside>
@@ -281,6 +1408,31 @@ COURSES.forEach(c=>c.units.forEach((u,ui)=>u.topics.forEach((t,ti)=>{
 const byC=id=>T.filter(t=>t.c.id===id);
 const pct=list=>list.length?Math.round(list.filter(t=>DONE.has(t.id)).length/list.length*100):0;
 
+// Frequent exam-question practice. Plumi is used only where its bank matches Nevaeh's exam board.
+const PLUMI_BANKS={
+ maths:{course:'maths',name:'AQA Higher Maths',task:'Finish with a focused set of Higher Maths exam questions',url:'https://tryplumi.app/question-bank/aqa-gcse-maths'},
+ science:{course:'science',name:'Edexcel Combined Science',task:'Finish with a focused set of Combined Science exam questions',url:'https://tryplumi.app/question-bank/edexcel-gcse-combined-science'},
+ englishLang:{course:'english',name:'Edexcel English Language',task:'Finish with a focused English Language question set',url:'https://tryplumi.app/question-bank/edexcel-gcse-english-language'},
+ englishLit:{course:'english',name:'Edexcel English Literature',task:'Finish with a focused English Literature question set',url:'https://tryplumi.app/question-bank/edexcel-gcse-english-literature'}
+};
+const PLUMI_BY_COURSE={maths:[PLUMI_BANKS.maths],science:[PLUMI_BANKS.science],english:[PLUMI_BANKS.englishLang,PLUMI_BANKS.englishLit]};
+const DAY_NAMES=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+let PRACTICE_DONE=new Set(store.get('nv_plumi_done',[]));
+function finishTask(w,weekIndex,dayIndex,topics){let bank,id;
+ if(dayIndex===1){bank=PLUMI_BANKS.maths;id=`plumi:${w.k}:maths`}
+ else if(dayIndex===2){bank=PLUMI_BANKS.science;id=`plumi:${w.k}:science`}
+ else if(dayIndex===3){bank=weekIndex%2?PLUMI_BANKS.englishLit:PLUMI_BANKS.englishLang;id=`plumi:${w.k}:english:${weekIndex%2}`}
+ else if(dayIndex===6)return{id:`plumi:${w.k}:sunday`,course:'maths',name:'Weekly mistake review',task:'Finish by redoing the exam questions you found hardest this week',url:'#exams',internal:true};
+ else{bank=topics.map(t=>(PLUMI_BY_COURSE[t.c.id]||[])[0]).find(Boolean);id=`plumi:${w.k}:${dayIndex}`;
+  if(bank)bank={...bank,task:"Finish with exam questions from today's topics"};
+  else{const course=topics[0]?.c||COURSES[0];return{id,course:course.id,name:`${course.name} exam practice`,task:"Finish with exam questions from today's topics",url:'#exams',internal:true}}
+ }
+ return{...bank,id}}
+function buildWeekDays(w,weekIndex){const days=DAY_NAMES.map((name,i)=>({name,short:name.slice(0,3).toUpperCase(),topics:[],practice:null}));
+ COURSES.forEach((c,ci)=>w.tasks.filter(t=>t.c===c).forEach((t,j)=>days[(j+ci*2)%6].topics.push(t)));
+ days.forEach(d=>{const queues=COURSES.map(c=>d.topics.filter(t=>t.c===c)),mixed=[];while(queues.some(q=>q.length))queues.forEach(q=>{if(q.length)mixed.push(q.shift())});d.topics=mixed});
+ days.forEach((d,i)=>{d.practice=finishTask(w,weekIndex,i,d.topics);d.practice.day=d.short});return days}
+
 // ---------- plan ----------
 const EXAM=new Date('2027-05-11T09:00:00');
 function mondays(){const out=[];let d=new Date('2026-11-16');while(d<=new Date('2027-05-03')){out.push(new Date(d));d.setDate(d.getDate()+7)}return out}
@@ -293,6 +1445,7 @@ const WEEKS=mondays().map(d=>{const k=d.toISOString().slice(0,10);
   return {d,k,kind,label,tasks:[]}});
 (function assign(){const learn=WEEKS.filter(w=>w.kind==='learn');
   COURSES.forEach(c=>{const ts=byC(c.id);ts.forEach((t,i)=>{const w=learn[Math.min(learn.length-1,Math.floor(i*learn.length/ts.length))];w.tasks.push(t)})})})();
+WEEKS.forEach((w,i)=>{w.days=buildWeekDays(w,i);w.practice=w.days.map(d=>d.practice)});
 const curWeek=()=>{const now=new Date();let i=WEEKS.findIndex((w,j)=>now<(WEEKS[j+1]?.d||new Date('2027-05-10')));return Math.max(0,i)};
 const fmt=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
 
@@ -308,7 +1461,7 @@ function side(){const h=location.hash.slice(1)||'home';
   ${COURSES.map(c=>`<a class="nav ${h===c.id?'on':''}" style="--c:${c.color}" href="#${c.id}"><span class="dot"></span>${esc(c.name)}<span class="pc">${pct(byC(c.id))}%</span></a>`).join('')}`}
 
 // ---------- dashboard ----------
-function home(){const all=pct(T);const now=new Date();const days=Math.max(0,Math.ceil((EXAM-now)/864e5));const wi=curWeek(),w=WEEKS[wi];
+function home(){const all=pct(T);const now=new Date();const days=Math.max(0,Math.ceil((EXAM-now)/864e5));const wi=curWeek(),w=WEEKS[wi],di=(now.getDay()+6)%7,today=w.days[di],todayDate=new Date(w.d);todayDate.setDate(todayDate.getDate()+di);
   const C=2*Math.PI*56;
   $('#v-home').innerHTML=`<div class="stag">
   <div class="hero"><div><h1>Hey Nevaeh 💗</h1><p class="sub">${days} days until your first GCSE exam (mid-May 2027; check your school timetable for exact dates).</p>
@@ -316,8 +1469,8 @@ function home(){const all=pct(T);const now=new Date();const days=Math.max(0,Math
     <div class="ring"><svg width="132" height="132"><circle class="bg" cx="66" cy="66" r="56"/><circle class="fg" id="ringfg" cx="66" cy="66" r="56" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><b>${all}%<small>overall</small></b></div></div>
   <div class="sec"><h2>Your courses</h2></div>
   <div class="grid g3 stag">${COURSES.map(c=>{const ts=byC(c.id),d=ts.filter(t=>DONE.has(t.id)).length;return `<a class="card scard" style="--c:${c.color}" href="#${c.id}"><div class="ic">${c.icon}</div><h3>${esc(c.name)}</h3><div class="spec">${esc(c.spec)}</div><div class="meta"><span><b>${d}</b> / ${ts.length} topics</span><b>${pct(ts)}%</b></div><div class="bar"><i data-w="${pct(ts)}"></i></div></a>`}).join('')}</div>
-  <div class="sec"><h2>This week · ${fmt(w.d)}</h2><a class="btn sm" href="#plan">Full plan →</a></div>
-  <div class="grid">${w.tasks.length?w.tasks.map(t=>nextRow(t)).join(''):`<div class="card"><b>${esc(w.label)}</b><p class="note">Do one timed past paper per subject. Open them from <a href="#exams" style="color:var(--acc)">Exams</a> and mark them up in the editor.</p></div>`}</div>
+  <div class="sec"><h2>Today · ${today.name} ${fmt(todayDate)}</h2><a class="btn sm" href="#plan">Full week →</a></div>
+  <div class="grid">${today.topics.length?today.topics.map(t=>nextRow(t)).join(''):`<div class="card"><b>${w.label?esc(w.label):'Catch-up and review'}</b><p class="note">Finish anything left from the week, review your mistake list and prepare for the next set of topics.</p></div>`}${practiceCard(today.practice)}</div>
   <div class="sec"><h2>Up next in each course</h2></div>
   <div class="grid">${COURSES.map(c=>{const t=byC(c.id).find(t=>!DONE.has(t.id));return t?nextRow(t):''}).join('')}</div></div>
   <div class="love card"><div class="hearts" aria-hidden="true"><i>💗</i><i>💕</i><i>💖</i><i>💗</i><i>💞</i></div>
@@ -329,6 +1482,9 @@ function home(){const all=pct(T);const now=new Date();const days=Math.max(0,Math
   requestAnimationFrame(()=>{setTimeout(()=>{const r=$('#ringfg');if(r)r.style.strokeDashoffset=C*(1-all/100);animBars()},60)});
 }
 function nextRow(t){return `<a class="next" style="--c:${t.c.color}" href="#${t.c.id}" data-jump="${t.id}"><span class="chk${DONE.has(t.id)?'':''}" style="pointer-events:none;${DONE.has(t.id)?'background:var(--c);border-color:var(--c)':''}"></span><div><div class="tg">${esc(t.c.name)} · ${esc(t.u.name)}</div><div class="tt">${esc(t.title)}</div></div><span class="go">→</span></a>`}
+function practiceCard(p){const d=PRACTICE_DONE.has(p.id),c=COURSES.find(x=>x.id===p.course)||COURSES[0],attrs=p.internal?'':' target="_blank" rel="noopener"';return `<div class="next${d?' done':''}" style="--c:${c.color}"><button class="chk" data-practice="${esc(p.id)}" aria-label="Mark question practice done" style="${d?'background:var(--c);border-color:var(--c)':''}"><svg viewBox="0 0 24 24" style="${d?'stroke-dashoffset:0':''}"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><div style="flex:1"><div class="tg">FINISH · ${esc(p.name)}</div><div class="tt" style="${d?'text-decoration:line-through;color:var(--muted)':''}">${esc(p.task)}</div></div><a class="btn sm" href="${esc(p.url)}"${attrs}>Exam questions ${p.internal?'→':'↗'}</a></div>`}
+function practicePlanRow(p){const d=PRACTICE_DONE.has(p.id),c=COURSES.find(x=>x.id===p.course)||COURSES[0],attrs=p.internal?'':' target="_blank" rel="noopener"';return `<div class="wt${d?' done':''}" style="--c:${c.color}"><button class="chk" data-practice="${esc(p.id)}" aria-label="Mark question practice done" style="${d?'background:var(--c);border-color:var(--c)':''}"><svg viewBox="0 0 24 24" style="${d?'stroke-dashoffset:0':''}"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><span class="sj">FINISH</span><span class="tt">${esc(p.task)}</span><a class="btn sm" href="${esc(p.url)}"${attrs}>Exam questions ${p.internal?'→':'↗'}</a></div>`}
+function topicPlanRow(t){return `<div class="wt${DONE.has(t.id)?' done':''}" style="--c:${t.c.color}"><button class="chk" data-done="${t.id}" style="${DONE.has(t.id)?'background:var(--c);border-color:var(--c)':''}"><svg viewBox="0 0 24 24" style="${DONE.has(t.id)?'stroke-dashoffset:0':''}"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><span class="sj">${esc(t.c.name)}</span><span class="tt">${esc(t.title)}</span><a class="btn sm yt" href="${esc(vid(t))}" target="_blank" rel="noopener">▶</a><a class="btn sm" href="#${t.c.id}" data-jump="${t.id}">Open</a></div>`}
 function animBars(){$$('.bar i[data-w]').forEach(b=>b.style.width=b.dataset.w+'%')}
 
 // ---------- course ----------
@@ -356,12 +1512,10 @@ function topicRow(t){const files=t.files.map(f=>/\.png$/.test(f)?`<button class=
 
 // ---------- plan view ----------
 function plan(){const wi=curWeek();
-  $('#v-plan').innerHTML=`<h1>My revision plan</h1><p class="sub">${WEEKS.length} weeks from 16 Nov to the exams. Every topic across your six courses is spread out, with holidays saved for past papers. Ticking a topic here also ticks it in the course.</p>
-  <div style="margin-top:22px" class="stag">${WEEKS.map((w,i)=>{const d=w.tasks.filter(t=>DONE.has(t.id)).length;const p=w.tasks.length?Math.round(d/w.tasks.length*100):0;
-   return `<div class="week${i===wi?' now open':''}" data-w="${i}"><div class="wh"><span class="wn">WEEK ${i+1}</span><h3>${fmt(w.d)} ${w.label?'· '+esc(w.label):`· ${w.tasks.length} topics`}</h3>${i===wi?'<span class="tag">THIS WEEK</span>':i<wi?'<span class="tag">past</span>':''}${w.tasks.length?`<div class="bar mini"><i data-w="${p}"></i></div>`:''}</div>
-   <div class="wb">${w.tasks.length?w.tasks.map(t=>`<div class="wt${DONE.has(t.id)?' done':''}" style="--c:${t.c.color}"><button class="chk" data-done="${t.id}" style="${DONE.has(t.id)?'background:var(--c);border-color:var(--c)':''}"><svg viewBox="0 0 24 24" style="${DONE.has(t.id)?'stroke-dashoffset:0':''}"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><span class="sj">${esc(t.c.name)}</span><span class="tt">${esc(t.title)}</span><a class="btn sm yt" href="${esc(vid(t))}" target="_blank" rel="noopener">▶</a><a class="btn sm" href="#${t.c.id}" data-jump="${t.id}">Open</a></div>`).join(''):
-   `<p class="note">${w.kind==='papers'?'Each day: one full timed paper in one subject, then mark it with the mark scheme and redo every question you dropped marks on. Do the English quote quizzes daily.':'Catch up on anything unticked, then do one past paper per subject from <a href="#exams" style="color:var(--acc)">Exams</a>.'}</p>`}
-   <p class="note" style="margin-top:8px">Suggested: about 3 topics a day. For each one, watch the video (10 min), make quick notes or flashcards, then do 2–3 exam questions. Sunday is catch-up.</p></div></div>`}).join('')}</div>`;
+  $('#v-plan').innerHTML=`<h1>My revision plan</h1><p class="sub">Every topic is divided across Monday to Saturday with a mixture of subjects. Each day finishes with exam questions; Sunday is for catching up and redoing mistakes.</p>
+  <div style="margin-top:22px" class="stag">${WEEKS.map((w,i)=>{const td=w.tasks.filter(t=>DONE.has(t.id)).length,pd=w.practice.filter(p=>PRACTICE_DONE.has(p.id)).length,total=w.tasks.length+w.practice.length,p=total?Math.round((td+pd)/total*100):0;
+   return `<div class="week${i===wi?' now open':''}" data-w="${i}"><div class="wh"><span class="wn">WEEK ${i+1}</span><h3>${fmt(w.d)} ${w.label?'· '+esc(w.label):'· daily mixed timetable'}</h3>${i===wi?'<span class="tag">THIS WEEK</span>':i<wi?'<span class="tag">past</span>':''}<div class="bar mini"><i data-w="${p}"></i></div></div>
+   <div class="wb"><div class="qexp" style="margin:0 0 12px"><b>Daily structure:</b> learn or review the mixed topic tasks first, then complete the final exam-question task and check the mark scheme.</div>${w.days.map((d,di)=>{const date=new Date(w.d);date.setDate(date.getDate()+di);const done=d.topics.filter(t=>DONE.has(t.id)).length+(PRACTICE_DONE.has(d.practice.id)?1:0),dayTotal=d.topics.length+1;return `<div class="card" style="margin:10px 0;padding:14px 16px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><h3 style="margin:0;flex:1">${d.name} · ${fmt(date)}</h3><span class="pill">${done}/${dayTotal} done</span></div>${d.topics.length?d.topics.map(topicPlanRow).join(''):`<p class="note" style="margin:8px 0">${di===6?'Catch up on unfinished topics and review the mistakes you recorded this week.':w.kind==='learn'?'Review flashcards or finish anything carried over from the previous day.':'Work through a timed paper section and mark it carefully.'}</p>`}${practicePlanRow(d.practice)}</div>`}).join('')}</div></div>`}).join('')}</div>`;
   setTimeout(()=>{animBars();$('.week.now')?.scrollIntoView({behavior:'smooth',block:'center'})},80)}
 
 // ---------- exams ----------
@@ -416,6 +1570,7 @@ addEventListener('hashchange',route);
 
 // ---------- global clicks ----------
 document.addEventListener('click',e=>{
+  const pr=e.target.closest('[data-practice]');if(pr){e.preventDefault();togglePractice(pr.dataset.practice,pr);return}
   const dn=e.target.closest('[data-done]');if(dn){e.preventDefault();toggle(dn.dataset.done,dn);return}
   const pp=e.target.closest('[data-pp]');if(pp){const S=new Set(store.get('nv_pp',[]));const k=pp.dataset.pp;const was=S.has(k);was?S.delete(k):S.add(k);store.set('nv_pp',[...S]);if(!was){const r=pp.getBoundingClientRect();confetti(r.left+10,r.top+10,'#ffb3d9',30)}exams();return}
   const tq=e.target.closest('[data-tq]');if(tq){e.preventDefault();e.stopPropagation();topicQuiz([T.find(x=>x.id===tq.dataset.tq)]);return}
@@ -429,6 +1584,7 @@ document.addEventListener('click',e=>{
   const uh=e.target.closest('.uh');if(uh){const u=uh.parentElement;u.classList.toggle('open');openUnits[u.dataset.u]=u.classList.contains('open');store.set('nv_open',openUnits);return}
   const wh=e.target.closest('.wh');if(wh){wh.parentElement.classList.toggle('open')}
 });
+function togglePractice(id,btn){const was=PRACTICE_DONE.has(id);was?PRACTICE_DONE.delete(id):PRACTICE_DONE.add(id);store.set('nv_plumi_done',[...PRACTICE_DONE]);if(!was){const r=btn.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2,'#ff6fb5',28);toast('✅ Question practice done')}route()}
 function toggle(id,btn){const was=DONE.has(id);was?DONE.delete(id):DONE.add(id);saveDone();
   const t=T.find(x=>x.id===id);
   $$(`[data-done="${id}"]`).forEach(b=>{const row=b.closest('.topic,.wt');if(row)row.classList.toggle('done',!was);b.style.background=!was?'var(--c)':'';b.style.borderColor=!was?'var(--c)':'';const s=b.querySelector('svg');if(s)s.style.strokeDashoffset=!was?'0':''});
@@ -460,40 +1616,43 @@ function quiz(id){const Q=QUIZZES[id];let order=Q.items.map((_,i)=>i).sort(()=>M
   m.querySelector('#fl').onclick=()=>{shown=!shown;draw()};
   m.querySelector('#qyes').onclick=()=>{score++;i++;shown=false;draw()};m.querySelector('#qno').onclick=()=>{i++;shown=false;draw()};draw()}
 
-// ---------- cross-device account sync ----------
-window.SYNC=(()=>{const KEYS=['nv_done','nv_open','nv_pp','nv_pps','nv_qs','nv_exc','nv_marked'];
- const TS=()=>{try{return JSON.parse(localStorage.getItem('nv_ts')||'{}')}catch(e){return{}}};
- const setTS=o=>{try{localStorage.setItem('nv_ts',JSON.stringify(o))}catch(e){}};
- const raw=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
- const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
- const lsSet=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}};
- let token=lsGet('nv_account_token')||'',user=lsGet('nv_account_user')||'',server=false,persistent=true,state='off',last=0,timer=null,applying=false;
+// ---------- cross-device sync ----------
+// Claude copy: per-person rows in the artifact's private db. Hosted copy: a private GitHub Gist.
+window.SYNC=(()=>{const KEYS=['nv_done','nv_open','nv_pp','nv_pps','nv_qs','nv_exc','nv_marked','nv_plumi_done'];
+ const TS=()=>{try{return JSON.parse(localStorage.getItem('nv_ts')||'{}')}catch(e){return{}}};const setTS=o=>{try{localStorage.setItem('nv_ts',JSON.stringify(o))}catch(e){}};
+ const raw=k=>localStorage.getItem(k);
+ let mode=null,state='off',last=0,timer=null,db=null,uid=null,applying=false;
+ const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},lsSet=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}};
  const set=st=>{state=st;const b=$('#syncSt');if(b)b.textContent=badge()};
- const badge=()=>state==='busy'?'…':state==='err'?'!':token&&state==='idle'?'✓':server?'sign in':'off';
- function snapshot(){const t=TS(),items={};KEYS.forEach(k=>{const v=raw(k);if(v!=null)items[k]={v,t:t[k]||1}});return items}
- function stampLocal(){const t=TS(),now=Date.now();KEYS.forEach(k=>{if(raw(k)!=null&&!t[k])t[k]=now});setTS(t)}
+ const badge=()=>({off:'off',idle:'✓',busy:'…',err:'!'})[state]||'';
+ function snapshot(){const t=TS(),o={};KEYS.forEach(k=>{const v=raw(k);if(v!=null)o[k]={v,t:t[k]||1}});return o}
  function apply(remote){if(!remote)return false;const t=TS();let changed=false;
-  for(const k of KEYS){const r=remote[k];if(!r||typeof r.v!=='string')continue;if((r.t||0)>(t[k]||0)){lsSet(k,r.v);t[k]=r.t;changed=true}}
-  if(changed){setTS(t);applying=true;try{DONE=new Set(store.get('nv_done',[]));openUnits=store.get('nv_open',{});exC=store.get('nv_exc','maths');QS=store.get('nv_qs',{});route()}finally{applying=false}}
+  for(const k of KEYS){const r=remote[k];if(!r||typeof r.v!=='string')continue;if((r.t||0)>(t[k]||0)){
+   let v=r.v,mine=raw(k);if(!t[k]&&mine&&(k==='nv_done'||k==='nv_pp'||k==='nv_plumi_done')){try{v=JSON.stringify([...new Set([...JSON.parse(r.v),...JSON.parse(mine)])]);t[k]=Date.now();lsSet(k,v);changed=true;continue}catch(e){}}
+   lsSet(k,v);t[k]=r.t;changed=true}}
+  if(changed){setTS(t);applying=true;try{DONE=new Set(store.get('nv_done',[]));PRACTICE_DONE=new Set(store.get('nv_plumi_done',[]));openUnits=store.get('nv_open',{});exC=store.get('nv_exc','maths');QS=store.get('nv_qs',{});route()}finally{applying=false}}
   return changed}
- function touch(k){if(applying||!KEYS.includes(k))return;const t=TS();t[k]=Date.now();setTS(t);if(token){clearTimeout(timer);timer=setTimeout(sync,1200)}}
- async function request(method,path,body){const r=await fetch(path,{method,cache:'no-store',headers:{...(token?{'Authorization':'Bearer '+token}:{}),...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});let j={};try{j=await r.json()}catch(e){}return{r,j}}
- function clearAccount(){token='';user='';lsSet('nv_account_token',null);lsSet('nv_account_user',null);set('off')}
- async function upload(items){const updated=Math.max(1,...Object.values(items).map(x=>Number(x.t)||0));const out=await request('PUT','/api/progress',{data:{items,updated}});if(out.r.status===401){clearAccount();throw new Error('signed out')}if(out.r.status===409&&out.j.data){apply(out.j.data.items||{});return false}if(!out.r.ok)throw new Error(out.j.error||'save failed');return true}
- async function sync(){if(!server||!token)return;set('busy');try{
-   const pulled=await request('GET','/api/progress');if(pulled.r.status===401){clearAccount();return}if(!pulled.r.ok)throw new Error('pull failed');
-   const remote=pulled.j.data&&pulled.j.data.items||{};apply(remote);const mine=snapshot();let need=false;
-   for(const k in mine)if(!remote[k]||(mine[k].t||0)>(remote[k].t||0)){need=true;break}
-   if(need)await upload(mine);last=Date.now();set('idle')
-  }catch(e){console.warn('sync',e);set('err')}}
- async function auth(mode,m){const username=m.querySelector('#sUser').value.trim(),password=m.querySelector('#sPass').value,err=m.querySelector('#sErr'),buttons=[...m.querySelectorAll('[data-auth]')];if(!username||!password){err.textContent='Enter a username and password.';return}buttons.forEach(b=>b.disabled=true);err.textContent='';
-  try{const out=await request('POST',mode==='register'?'/api/register':'/api/login',{username,password});if(!out.r.ok)throw new Error(out.j.error||'Could not sign in.');token=out.j.token;user=out.j.username;lsSet('nv_account_token',token);lsSet('nv_account_user',user);if(mode==='register')stampLocal();await sync();m.remove();toast(mode==='register'?'☁️ Account created — progress is syncing':'☁️ Signed in — progress restored');confetti(innerWidth/2,innerHeight/3,'#22c4ee',60)}catch(e){err.textContent=e.message;buttons.forEach(b=>b.disabled=false)}}
- async function start(){try{const r=await fetch('/api/health',{cache:'no-store'});if(!r.ok)throw 0;const j=await r.json();server=true;persistent=j.persistent!==false;if(token){const me=await request('GET','/api/me');if(me.r.ok){user=me.j.username||user;await sync()}else clearAccount()}else set('off');setInterval(sync,60000);addEventListener('focus',sync)}catch(e){server=false;set('off')}}
- function panel(){const signed=server&&token;const m=modal(`<div class="mbox qbox"><h2>☁️ Sync across devices</h2>${!server?
-  `<p class="sub" style="margin:8px 0 14px">This copy is running as a static site, so it can only save in this browser. Deploy the repository as a Node web service with <b>node server.js</b> to enable accounts.</p>`:
-  signed?`<p class="sub" style="margin:8px 0 14px">Signed in as <b>${esc(user)}</b>. Your progress syncs automatically. ${last?'Last synced '+new Date(last).toLocaleTimeString()+'.':''}</p>${persistent?'':'<p class="qexp"><b>Host setup needed:</b> storage is temporary. Add Upstash or a persistent DATA_DIR so accounts survive restarts.</p>'}<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="sNow">Sync now</button><button class="btn" id="sOut">Sign out</button></div>`:
-  `<p class="sub" style="margin:8px 0 14px">Create an account, then use the same username and password on every browser or device.</p><label style="display:block;margin:10px 0 5px">Username</label><input id="sUser" autocomplete="username" placeholder="3–24 letters or numbers" style="width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 12px;font:inherit"><label style="display:block;margin:12px 0 5px">Password</label><input id="sPass" type="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters" style="width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 12px;font:inherit"><div id="sErr" style="min-height:20px;color:#ff7a59;margin-top:8px"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" data-auth="login">Sign in</button><button class="btn" data-auth="register">Create account</button></div>`}<p class="note" style="margin-top:14px">Imported PDF files stay on each device because they are large; your annotations on them do sync.</p></div>`);
-  m.querySelectorAll('[data-auth]').forEach(b=>b.onclick=()=>auth(b.dataset.auth,m));const now=m.querySelector('#sNow');if(now)now.onclick=async()=>{await sync();m.remove();toast(state==='err'?'Sync failed':'☁️ Synced')};const out=m.querySelector('#sOut');if(out)out.onclick=async()=>{try{await request('POST','/api/logout')}catch(e){}clearAccount();m.remove();toast('Signed out on this device')}}
+ function touch(k){if(applying||!KEYS.includes(k))return;const t=TS();t[k]=Date.now();setTS(t);if(mode){clearTimeout(timer);timer=setTimeout(push,1500)}}
+ const GH='https://api.github.com',tok=()=>lsGet('nv_gh');
+ async function gh(path,opt={}){const r=await fetch(GH+path,{...opt,headers:{'Authorization':'Bearer '+tok(),'Accept':'application/vnd.github+json',...(opt.body?{'Content-Type':'application/json'}:{})}});if(!r.ok)throw new Error('GitHub '+r.status);return r.json()}
+ async function gistId(){let id=lsGet('nv_gist');if(id)return id;const list=await gh('/gists?per_page=100');const g=list.find(x=>x.description==='nevaeh-revision-sync');
+  if(g)id=g.id;else id=(await gh('/gists',{method:'POST',body:JSON.stringify({description:'nevaeh-revision-sync',public:false,files:{'state.json':{content:'{}'}}})})).id;lsSet('nv_gist',id);return id}
+ async function ghPull(){const g=await gh('/gists/'+await gistId()),f=g.files&&g.files['state.json'];if(!f)return{};let c=f.content;if(f.truncated&&f.raw_url)c=await(await fetch(f.raw_url)).text();try{return JSON.parse(c||'{}')}catch(e){return{}}}
+ async function ghPush(o){await gh('/gists/'+await gistId(),{method:'PATCH',body:JSON.stringify({files:{'state.json':{content:JSON.stringify(o)}}})})}
+ async function dbPull(){const o={};await Promise.all(KEYS.map(async k=>{try{const d=await db.collection('data/users/'+uid).doc(k).get(),v=d&&(d.data?d.data():d);if(v&&typeof v.v==='string')o[k]=v}catch(e){}}));return o}
+ const dbSent={};async function dbPush(o){const t=TS();for(const k of KEYS){if(!o[k]||(t[k]||0)<=(dbSent[k]||0))continue;await db.collection('data/users/'+uid).doc(k).set(o[k]);dbSent[k]=t[k]}}
+ async function sync(){if(!mode)return;set('busy');try{const remote=mode==='gist'?await ghPull():await dbPull();apply(remote);const mine=snapshot();let need=false;for(const k in mine)if(!remote[k]||(mine[k].t||0)>(remote[k].t||0))need=true;
+   if(need){mode==='gist'?await ghPush({...remote,...Object.fromEntries(Object.entries(mine).filter(([k,v])=>!remote[k]||v.t>(remote[k].t||0)))}):await dbPush(mine)}last=Date.now();set('idle')}catch(e){console.warn('sync',e);set('err')}}
+ async function push(){if(!mode)return;set('busy');try{if(mode==='gist'){const remote=await ghPull();apply(remote);const mine=snapshot(),out={...remote};for(const k in mine)if(!remote[k]||mine[k].t>(remote[k].t||0))out[k]=mine[k];await ghPush(out)}else await dbPush(snapshot());last=Date.now();set('idle')}catch(e){console.warn('sync',e);set('err')}}
+ async function start(){try{if(window.claude&&claude.use){const[d,u]=await Promise.all([claude.use('db'),claude.use('user')]);if(d&&u){const id=typeof u.id==='function'?await u.id():u.id;if(id){db=d;uid=id;mode='db';await sync();setInterval(sync,60000);addEventListener('focus',sync);return}}}}catch(e){}
+  if(tok()){mode='gist';await sync();setInterval(sync,60000);addEventListener('focus',sync);return}set('off')}
+ function panel(){const m=modal(`<div class="mbox qbox"><h2>☁️ Sync across devices</h2>
+  ${mode==='db'?`<p class="sub" style="margin:8px 0">Your progress syncs automatically to your Claude account on every device. ${last?'Last synced '+new Date(last).toLocaleTimeString()+'.':''}</p>`:
+  mode==='gist'?`<p class="sub" style="margin:8px 0">Syncing through a private GitHub Gist. ${last?'Last synced '+new Date(last).toLocaleTimeString()+'.':''} ${state==='err'?'<b style="color:#ff7a59">Last sync failed — check the token.</b>':''}</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="sNow">Sync now</button><button class="btn" id="sOff">Disconnect this device</button></div>`:
+  `<p class="sub" style="margin:8px 0 14px">Ticks, quiz scores, paper scores, plans and PDF annotations sync through a <b>private GitHub Gist</b>.</p><ol style="line-height:1.7;margin:0 0 14px 18px;padding:0"><li><a href="https://github.com/settings/tokens/new?scopes=gist&description=nevaeh-revision%20sync" target="_blank" rel="noopener" style="color:var(--acc)">Create a GitHub token</a> with only the <b>gist</b> box ticked.</li><li>Paste it below, then use the same token on Nevaeh's other devices.</li></ol><input id="sTok" placeholder="ghp_… or github_pat_…" style="width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 12px;font:inherit"><div style="margin-top:12px"><button class="btn pri" id="sGo">Connect</button></div>`}
+  <p class="note" style="margin-top:14px">Imported past papers stay on each device because they're large; annotations on them do sync.</p></div>`);
+  const go=m.querySelector('#sGo');if(go)go.onclick=async()=>{const v=m.querySelector('#sTok').value.trim();if(!v)return;lsSet('nv_gh',v);lsSet('nv_gist',null);go.textContent='Connecting…';try{await gh('/user');mode='gist';await sync();if(state==='err')throw 0;m.remove();toast('☁️ Synced — connect the other devices too');confetti(innerWidth/2,innerHeight/3,'#ff6fb5',80);setInterval(sync,60000)}catch(e){lsSet('nv_gh',null);go.textContent='Connect';toast('That token didn’t work — make sure the gist box is ticked')}};
+  const now=m.querySelector('#sNow');if(now)now.onclick=async()=>{await sync();m.remove();toast(state==='err'?'Sync failed':'☁️ Synced')};const off=m.querySelector('#sOff');if(off)off.onclick=()=>{lsSet('nv_gh',null);lsSet('nv_gist',null);mode=null;set('off');m.remove();toast('This device is no longer syncing')}}
  return{touch,start,panel,badge,sync}})();
 setTimeout(()=>SYNC.start(),0);
 document.addEventListener('click',e=>{if(e.target.closest('#syncBtn')){e.preventDefault();SYNC.panel()}});
@@ -722,5 +1881,5 @@ const ll=document.getElementById('loveLine');let j=0;setInterval(()=>{j=(j+1)%L.
 if(typeof toggle==='function'){const _t=toggle;window.toggle=function(id,btn){const was=DONE.has(id);const r=_t.apply(this,arguments);if(!was&&Math.random()<.3)setTimeout(()=>show(['another one done!! im so proud of u 💗','look at u go muppet 💗','smashing it, kunj loves u 💗'][Math.floor(Math.random()*3)],10),300);return r}}
 })();
 </script>
-</body>
+  </body>
 </html>
